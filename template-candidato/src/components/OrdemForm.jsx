@@ -1,9 +1,6 @@
 import { useState } from "react";
 
-export default function OrdemForm({
-  clientes,
-  onSalvar,
-}) {
+export default function OrdemForm({ clientes, onSalvar }) {
   const [clienteId, setClienteId] = useState("");
   const [descricao, setDescricao] = useState("");
   const [valor, setValor] = useState("");
@@ -17,7 +14,7 @@ export default function OrdemForm({
     }
 
     onSalvar({
-      cliente_id: Number(clienteId),
+      cliente_id: clienteId, // Removido o Number() para aceitar UUIDs do Supabase
       descricao,
       valor: Number(valor),
       status: "Pendente",
@@ -35,10 +32,12 @@ export default function OrdemForm({
       <select
         value={clienteId}
         onChange={(e) => setClienteId(e.target.value)}
+        required
       >
         <option value="">Selecione</option>
 
-        {clientes.map((cliente) => (
+        {/* Adicionado o 'clientes &&' para garantir que só mapeia se a lista existir */}
+        {clientes && clientes.map((cliente) => (
           <option
             key={cliente.id}
             value={cliente.id}
@@ -51,18 +50,16 @@ export default function OrdemForm({
       <textarea
         placeholder="Descrição"
         value={descricao}
-        onChange={(e) =>
-          setDescricao(e.target.value)
-        }
+        onChange={(e) => setDescricao(e.target.value)}
+        required
       />
 
       <input
         type="number"
         placeholder="Valor"
         value={valor}
-        onChange={(e) =>
-          setValor(e.target.value)
-        }
+        onChange={(e) => setValor(e.target.value)}
+        required
       />
 
       <button type="submit">

@@ -1,14 +1,7 @@
-import { supabase } from "../supabaseClient";
-
 export async function listarOrdens() {
   const { data, error } = await supabase
     .from("ordens_servico")
-    .select(`
-      *,
-      clientes (
-        nome
-      )
-    `)
+    .select("*")
     .order("created_at", { ascending: false });
 
   if (error) throw error;
