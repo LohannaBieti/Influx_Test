@@ -1,0 +1,59 @@
+/* 
+App.css está vazio para evitar conflitos de estilização. 
+Toda a estilização global está em src/index.css.
+Sinta-se livre para adicionar estilos específicos aqui caso precise.
+*/
+/* ==========================================================================
+   Estilização dos Status das Ordens de Serviço (Select interativo)
+   ========================================================================== */
+
+/* Remove a borda padrão pesada e padroniza o visual do select na tabela */
+.select-status {
+  font-weight: 600;
+  border: 1px solid transparent;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Status: Pendente (Vermelho) */
+.select-status.status-pendente {
+  color: #b91c1c;
+  background-color: #fef2f2;
+  border-color: #fee2e2;
+}
+.select-status.status-pendente:focus {
+  box-shadow: 0 0 0 2px #fca5a5;
+}
+
+/* Status: Em Andamento (Laranja) */
+.select-status.status-andamento {
+  color: #c2410c;
+  background-color: #fff7ed;
+  border-color: #ffedd5;
+}
+.select-status.status-andamento:focus {
+  box-shadow: 0 0 0 2px #fdba74;
+}
+
+/* Status: Finalizada (Verde) */
+.select-status.status-finalizada {
+  color: #15803d;
+  background-color: #f0fdf4;
+  border-color: #dcfce7;
+}
+.select-status.status-finalizada:focus {
+  box-shadow: 0 0 0 2px #86efac;
+}
+
+/* Status: Cancelada (Cinza) */
+.select-status.status-cancelada {
+  color: #475569;
+  background-color: #f1f5f9;
+  border-color: #e2e8f0;
+}
+.select-status.status-cancelada:focus {
+  box-shadow: 0 0 0 2px #cbd5e1;
+}
